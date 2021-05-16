@@ -1,0 +1,5 @@
+
+extend type Query {
+    hello: String!
+    hello2(who:String!): String! #请求参数who
+}

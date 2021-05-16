@@ -1,0 +1,33 @@
+type Person {
+    id: Int!
+    firstName: String!
+    lastName: String!
+    fullName: String! #计算属性 PersonResolver
+}
+
+input PersonRo {
+    firstName: String!
+    lastName: String!
+}
+
+type PageResult{
+
+    items:[Person]!
+
+    pageNo:Int!
+
+    pageSize:Int!
+
+    totalCount:Int!
+
+}
+
+extend type Mutation {
+    createPerson(firstName: String!, lastName: String!): Person!
+    createPersonBatch(list:[PersonRo!]!):Boolean
+}
+
+extend type Query {
+    people(firstName: String, lastName: String): [Person!]!
+    personPage(page: Int!, pageSize: Int!): PageResult!
+}
